@@ -68,8 +68,14 @@ function reset()
 
 function updateInput(e)
 {
-	array[parseInt(e.offsetX / (width / resolution))][parseInt(e.offsetY / (height / resolution))] = 1;
-	render();
+	if(e.ctrlKey == true)
+	{
+	}
+	else
+	{
+		array[parseInt(e.offsetX / (width / resolution))][parseInt(e.offsetY / (height / resolution))] = 1;
+		render();
+	}
 }
 
 function playGame()
