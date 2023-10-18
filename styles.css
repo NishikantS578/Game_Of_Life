@@ -1,0 +1,31 @@
+*
+{
+	margin: 0;
+	padding: 0;
+}
+
+body
+{
+}
+
+.container
+{
+	margin: auto;
+	display: block;
+}
+
+button
+{
+	position: absolute;
+	top: calc(50vh);
+	left: 25vh;
+	width: 20vh;
+	height: 10vh;
+	background: black;
+	color: white;
+	font-size: 5vh;
+	font-family: hack, serif;
+	font-weight: bolder;
+	border: 1px solid black;
+	border-radius: 4px;
+}
