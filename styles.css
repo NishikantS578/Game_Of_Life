@@ -8,6 +8,7 @@ body
 {
     height: 100vh;
     width: 100vw;
+	font-family: hack, serif;
 }
 
 h1{
@@ -44,12 +45,11 @@ h1{
 
 button
 {
-	width: 20vh;
-	height: 10vh;
+	width: 200px;
+	height: 75px;
 	background: #222;
 	color: white;
 	font-size: 5vh;
-	font-family: hack, serif;
 	font-weight: bolder;
 	border: 1px solid black;
 	border-radius: 4px;
@@ -64,7 +64,9 @@ button
     gap: 20px;
 }
 
-.inputResolution > label{
+.controls > label{
+    margin-top: 2em;
+    font-size: 1.5rem;
     width: 100%;
     text-align: center;
 }
@@ -80,15 +82,19 @@ button
     transition-duration: 200ms;
 }
 
-
 button:active{
     background: white;
     color: black;
 }
 
+select{
+    margin-top: 1em;
+    font-size: 1.25rem;
+}
+
 .help{
     position: absolute;
-    font-size: 2rem;
+    font-size: 1.5rem;
     right: 0px;
     margin-right: 1em;
 }
