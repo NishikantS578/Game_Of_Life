@@ -6,26 +6,89 @@
 
 body
 {
+    height: 100vh;
+    width: 100vw;
 }
 
-.container
+h1{
+    z-index: 1;
+    color: #222;
+    font-size: 3rem;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.canvas
 {
 	margin: auto;
 	display: block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.controls {
+    position: absolute;
+    top: 50vh;
+    transform: translateY(-50%);
+    margin-left: 15vw;
+    width: 10vw;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
 }
 
 button
 {
-	position: absolute;
-	top: calc(50vh);
-	left: 25vh;
 	width: 20vh;
 	height: 10vh;
-	background: black;
+	background: #222;
 	color: white;
 	font-size: 5vh;
 	font-family: hack, serif;
 	font-weight: bolder;
 	border: 1px solid black;
 	border-radius: 4px;
+}
+
+.inputResolution{
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.inputResolution > label{
+    width: 100%;
+    text-align: center;
+}
+
+.decreaseResolution,
+.increaseResolution{
+    font-size: 1.5rem;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition-duration: 200ms;
+}
+
+
+button:active{
+    background: white;
+    color: black;
+}
+
+.help{
+    position: absolute;
+    font-size: 2rem;
+    right: 0px;
+    margin-right: 1em;
 }

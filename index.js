@@ -1,19 +1,46 @@
-const container = document.querySelector(".container");
-const play = document.querySelector("button");
+const container = document.querySelector(".canvas")
+const playButton = document.querySelector("button")
+const increase_resolution_btn = document.querySelector(".increaseResolution")
+const decrease_resolution_btn = document.querySelector(".decreaseResolution")
+const resolution_el = document.querySelector(".resolution")
 
-const ctx = container.getContext("2d");
-container.style.width = "800px";
-container.style.height = "800px";
-width = 800;
-height = width;
-const resolution = 100;
+const ctx = container.getContext("2d")
+let resolution = 50
+container.style.width = "800px"
+container.style.height = "800px"
+let width = 800
+let height = width
+let array=[]
 
-container.addEventListener("mousemove", updateInput);
-play.addEventListener("click", playGame);
+resolution_el.textContent = resolution
+reset()
+render()
 
-let array=[];
-reset();
-render();
+document.addEventListener("click", function(e){
+    if(e.target == playButton){
+        playGame()
+    }
+    else if(e.target == increase_resolution_btn){
+        resolution++
+        resolution_el.textContent = resolution
+        reset()
+        render()
+    }
+    else if(e.target == decrease_resolution_btn){
+        if(resolution != 2){
+            resolution--
+            resolution_el.textContent = resolution
+            reset()
+            render()
+        }
+    }
+})
+
+document.addEventListener("mousemove", function(e){
+    if(e.target == container){
+        updateInput(e)
+    }
+})
 
 function render()
 {
@@ -23,101 +50,113 @@ function render()
 		{
 			if(array[i][j] == 1)
 			{
-				ctx.fillStyle = "green";
+				ctx.fillStyle = "green"
 				ctx.fillRect(
 					i * (width / resolution),
 					j * (height / resolution),
 					width / resolution,
 					height / resolution
-				);
+				)
 			}
 			else
 			{
-				ctx.strokeStyle = "black";
-				ctx.lineWidth = 1;
+				ctx.strokeStyle = "black"
+				ctx.lineWidth = 1
 				ctx.strokeRect(
 					i * (width / resolution),
 					j * (height / resolution),
 					width / resolution,
 					height / resolution
-				);
-				ctx.fillStyle = "white";
+				)
+				ctx.fillStyle = "white"
 				ctx.fillRect(
 					i * (width / resolution),
 					j * (height / resolution),
 					width / resolution,
 					height / resolution
-				);
+				)
 			}
 		}
 	}
 }
 
-
 function reset()
 {
 	for(let i=0;i<resolution;i++)
 	{
-		array[i]=[];
+		array[i]=[]
 		for(let j=0;j<resolution;j++)
 		{
-			array[i][j] = 0;
+			array[i][j] = 0
 		}
 	}
 }
 
 function updateInput(e)
 {
-	if(e.ctrlKey == true)
+	if(e.ctrlKey != true)
 	{
-	}
-	else
-	{
-		array[parseInt(e.offsetX / (width / resolution))][parseInt(e.offsetY / (height / resolution))] = 1;
-		render();
+		array[parseInt(e.offsetX / (width / resolution))]
+            [parseInt(e.offsetY / (height / resolution))] = 1
+		render()
 	}
 }
 
 function playGame()
 {
-	let sum = [];
+	let sum = []
 	for(let i = 0; i < resolution; i++)
 	{
-		sum[i] = [];
+		sum[i] = []
 		for(let j = 0; j < resolution; j++)
 		{
-			sum[i][j] = 0;
-			(i - 1 > -1 && j - 1 > -1) ? sum[i][j] += array[i - 1][j - 1] : sum[i][j] += 0 ;
-			(i - 1 > -1) ? sum[i][j] += array[i - 1][j] : sum[i][j] += 0 ;
-			(i - 1 > -1 && j + 1 < resolution) ? sum[i][j] += array[i - 1][j + 1] : sum[i][j] += 0 ;
-			(j - 1 > -1) ? sum[i][j] += array[i][j - 1] : sum[i][j] += 0 ;
-			(j + 1 < resolution) ? sum[i][j] += array[i][j + 1] : sum[i][j] += 0 ;
-			(i + 1 < resolution && j - 1 > -1) ? sum[i][j] += array[i + 1][j - 1] : sum[i][j] += 0 ;
-			(i + 1 < resolution) ? sum[i][j] += array[i + 1][j] : sum[i][j] += 0 ;
-			(i + 1 < resolution && j + 1 < resolution) ? sum[i][j] += array[i + 1][j + 1] : sum[i][j] += 0;
+			sum[i][j] = 0
+			i - 1 > -1 && j - 1 > -1 ?
+                sum[i][j] += array[i - 1][j - 1] :
+                sum[i][j] += 0 
+			i - 1 > -1 ?
+                sum[i][j] += array[i - 1][j] :
+                sum[i][j] += 0 
+			i - 1 > -1 && j + 1 < resolution ? 
+                sum[i][j] += array[i - 1][j + 1] :
+                sum[i][j] += 0 
+			j - 1 > -1 ?
+                sum[i][j] += array[i][j - 1] :
+                sum[i][j] += 0 
+			j + 1 < resolution ?
+                sum[i][j] += array[i][j + 1] :
+                sum[i][j] += 0 
+			i + 1 < resolution && j - 1 > -1 ?
+                sum[i][j] += array[i + 1][j - 1] :
+                sum[i][j] += 0 
+			i + 1 < resolution ?
+                sum[i][j] += array[i + 1][j] :
+                sum[i][j] += 0 
+			i + 1 < resolution && j + 1 < resolution ?
+                sum[i][j] += array[i + 1][j + 1] :
+                sum[i][j] += 0
 		}
 	}
 	for(let i = 0; i < resolution; i++)
 	{
 		for(let j = 0; j < resolution; j++)
 		{
-			console.log(sum[i][j]);
 			switch(sum[i][j])
 			{
 				case 0:
 				case 1:
 					{
-						array[i][j] = 0;
-						break;
+						array[i][j] = 0
+						break
 					}
 				case 2:
 					{
-						break;
+						break
 					}
 				case 3:
 					{
-						array[i][j] = 1;
-						break;
+						array[i][j] = 1
+						break
 					}
 				case 4:
 				case 5:
@@ -125,14 +164,14 @@ function playGame()
 				case 7:
 				case 8:
 					{
-						array[i][j] = 0;
-						break;
+						array[i][j] = 0
+						break
 					}
 			}
 		}
 	}
-	render();
-	setTimeout(playGame, 00);
+	render()
+	setTimeout(playGame, 100)
 }
 
 
