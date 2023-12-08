@@ -7,37 +7,37 @@
 	</head>
 	<body>
         <h1>Conway's game of life</h1>
-		<canvas class="canvas" width="800" height="800"></canvas>
-        <div class="controls">
-            <button>Play</button>
-            <label> Resolution </label>
-            <div class="inputResolution">
-                <button class="decreaseResolution"> - </button>
-                <span class="resolution"></span>
-                <button class="increaseResolution"> + </button>
+        <div class="container">
+            <div class="controls">
+                Press Ctrl to not activate the squares
+                <button>Play</button>
+                <label> Resolution </label>
+                <div class="inputResolution">
+                    <button class="decreaseResolution"> - </button>
+                    <span class="resolution"></span>
+                    <button class="increaseResolution"> + </button>
+                </div>
+                <select class="prebuiltSetups">
+                    <option val=""> --select--</option>
+                    <option val="block"> block </option>
+                    <option val="bee-hive"> bee-hive </option>
+                    <option val="loaf"> loaf </option>
+                    <option val="boat"> boat </option>
+                    <option val="tub"> tub </option>
+                    <option val="blinker"> blinker </option>
+                    <option val="toad"> toad </option>
+                    <option val="beacon"> beacon </option>
+                    <option val="pulsar"> pulsar </option>
+                    <option val="penta-decathlon"> penta-decathlon </option>
+                    <option val="glider"> glider </option>
+                    <option val="light-weight-spaceship"> light-weight-spaceship </option>
+                    <option val="middle-weight-spaceship"> middle-weight-spaceship </option>
+                    <option val="heavy-weight-spaceship"> heavy-weight-spaceship </option>
+                    <option val="gosper-glider-gun"> gosper-glider-gun </option>
+                    <option val="simkin-glider-gun"> simkin-glider-gun </option>
+                </select>
             </div>
-            <select class="prebuiltSetups">
-                <option val=""> --select--</option>
-                <option val="block"> block </option>
-                <option val="bee-hive"> bee-hive </option>
-                <option val="loaf"> loaf </option>
-                <option val="boat"> boat </option>
-                <option val="tub"> tub </option>
-                <option val="blinker"> blinker </option>
-                <option val="toad"> toad </option>
-                <option val="beacon"> beacon </option>
-                <option val="pulsar"> pulsar </option>
-                <option val="penta-decathlon"> penta-decathlon </option>
-                <option val="glider"> glider </option>
-                <option val="light-weight-spaceship"> light-weight-spaceship </option>
-                <option val="middle-weight-spaceship"> middle-weight-spaceship </option>
-                <option val="heavy-weight-spaceship"> heavy-weight-spaceship </option>
-                <option val="gosper-glider-gun"> gosper-glider-gun </option>
-                <option val="simkin-glider-gun"> simkin-glider-gun </option>
-            </select>
-        </div>
-        <div class="help">
-            Press Ctrl to not activate the squares
+            <canvas class="canvas" width="800" height="800"></canvas>
         </div>
 	</body>
 </html>
